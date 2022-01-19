@@ -20,44 +20,54 @@ const Form = (props) => {
 
   const handleFirstName = (e) =>{
     setFirstName(e.target.value);
-    if(e.target.value < 2 ){
+    if(e.target.value.length < 2 ){
       setFirstNameError("First name must be at least 2 characters!")
+    } else {
+      setFirstNameError("")
     }
   };
 
   const handleLastName = (e) =>{
     setLastName(e.target.value);
-    if(e.target.value < 2 ){
+    if(e.target.value.length < 2 ){
       setLastNameError("Last name must be at least 2 characters!")
+    } else {
+    setLastNameError("")
     }
   };
 
   const handleEmail = (e) =>{
     setEmail(e.target.value);
-    if(e.target.value < 2 ){
+    if(e.target.value.length < 2 ){
       setEmailError("Email must be at least 2 characters!")
+    } else {
+    setEmailError("")
     }
-  }
+  };
 
   const handlePassword = (e) =>{
     setPassword(e.target.value);
-    if(e.target.value < 8 ){
+    if(e.target.value.length < 8 ){
       setPasswordError("Password must be at least 8 characters!")
+    } else {
+      setPasswordError("")
     }
-  }
+  };
 
   const handleConfirmPassword = (e) =>{
     setConfirmPassword(e.target.value);
-    if(e.target.value != password){
+    if(e.target.value.length != password){
       setConfirmPasswordError("Confirm password must match Password!")
+    } else {
+      setConfirmPasswordError("")
     }
-  }
+  };
 
   return (        
   <form onSubmit={ createUser }>
     <div>
         <label>First Name: </label> 
-        <input type="text" onChange={ (e) => handleFirstName(e) } />{
+        <input value={firstName} type="text" onChange={ (e) => handleFirstName(e) } />{
             firstNameError ? 
             <p style ={{color: 'red'}}>{ firstNameError }</p>:
             ''
